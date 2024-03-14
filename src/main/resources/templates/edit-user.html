@@ -10,8 +10,8 @@
     <input type="hidden" th:field="*{id}" th:value="${user.id}"/>
     <table border="1">
         <tr>
-            <th><label for="userName">Enter User name</label></th>
-            <th><input type="text" th:field="*{userName}" id="userName"/></th>
+            <th><label for="username">Enter User name</label></th>
+            <th><input type="text" th:field="*{username}" id="username"/></th>
         </tr>
         <tr>
             <th><label for="password">Enter password</label></th>
@@ -32,11 +32,11 @@
         <tr>
             <th><input type="submit" value="Ok"/></th>
         </tr>
-        <label>Select roles:
-            <span th:each="role : ${roles}">
-            <input type="checkbox" name="role" th:value="${role.getId()}" th:text="${role.getRole()}" th:field="*{roles}"/>
-        </span>
-        </label>
+        <label>Select roles:</label>
+        <span th:each="role : ${roles}">
+    <input type="checkbox" name="roles" th:value="${role.getId()}" th:checked="${user.roles.contains(role)}"/>
+    <label th:text="${role.getRoleName()}"></label>
+</span>
     </table>
 </form>
 <form th:action="@{/logout}" th:method="POST">

@@ -9,8 +9,8 @@
 <form th:method="post" th:action="@{/admin/addUser}" th:object="${addUser}">
     <table border="1">
         <tr>
-            <th><label for="userName">Enter User name</label></th>
-            <th><input type="text" th:field="*{userName}" id="userName"/></th>
+            <th><label for="username">Enter User name</label></th>
+            <th><input type="text" th:field="*{username}" id="username"/></th>
         </tr>
         <tr>
             <th><label for="password">Enter password</label></th>
@@ -31,11 +31,12 @@
         <tr>
             <th><input type="submit" value="Ok"/></th>
         </tr>
-            <label>Select roles:
-                <span th:each="role : ${roles}">
-            <input type="checkbox" name="role" th:value="${role.getId()}" th:text="${role.getRole()}" th:field="*{roles}"/>
+        <label>Select roles:
+            <span th:each="role : ${roles}">
+            <input type="checkbox" name="role" th:value="${role.getId()}" th:text="${role.getRoleName()}"
+                   th:field="*{roles}"/>
         </span>
-            </label>
+        </label>
     </table>
 </form>
 <form th:action="@{/logout}" th:method="POST">

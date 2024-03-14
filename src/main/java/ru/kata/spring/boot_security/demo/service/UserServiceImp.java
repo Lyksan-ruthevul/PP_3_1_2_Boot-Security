@@ -14,14 +14,13 @@ import java.util.List;
 public class UserServiceImp implements UserService {
 
     private UserDAO userDAO;
+    private PasswordEncoder bCryptPasswordEncoder;
 
     @Autowired
-    public UserServiceImp(UserDAO userDAO) {
+    public UserServiceImp(UserDAO userDAO, PasswordEncoder bCryptPasswordEncoder) {
         this.userDAO = userDAO;
+        this.bCryptPasswordEncoder = bCryptPasswordEncoder;
     }
-
-    @Autowired
-    PasswordEncoder bCryptPasswordEncoder;
 
     @Override
     @Transactional(readOnly = true)
